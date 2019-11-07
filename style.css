@@ -65,6 +65,7 @@ body {
     position: absolute;
     bottom: 350px;
     left: 300px;
+    background: url(images/BAS.gif);
 }
 
 #enemy {
@@ -74,6 +75,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+    background: url(images/ennemi/DEVANT.gif);
 }
 
 .bomb {

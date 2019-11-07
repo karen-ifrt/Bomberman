@@ -66,24 +66,28 @@ window.addEventListener("keydown", function (event) {
         case 38:
             //code quand on va en haut
             move(hero, "haut");
+            hero.style.background = "url(images/HAUT.gif)";
             break;
 
         //droite
         case 39:
             //code quand on va à droite
             move(hero, "droite");
+            hero.style.background = "url(images/DROIT.gif)";
             break;
 
         //bas
-        case 40:
+        case 40:  
+        //code quand on va en bas
             move(hero, "bas");
-            //code quand on va en bas
+            hero.style.background = "url(images/BAS.gif)";
             break;
 
         //gauche
         case 37:
             //code quand on va à gauche
             move(hero, "gauche");
+            hero.style.background = "url(images/GAUCHE.gif)";
             break;
 
         case 32:
@@ -107,33 +111,41 @@ setInterval(function () {
         case 0:
             if (parseInt(window.getComputedStyle(enemy).getPropertyValue("top")) === 0) {
                 move(enemy, "bas");
+                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
             }
             else {
                 move(enemy, "haut");
+                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
             }
             break;
         case 1:
             if (parseInt(window.getComputedStyle(enemy).getPropertyValue("top")) === 650) {
                 move(enemy, "haut");
+                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
             }
             else {
                 move(enemy, "bas");
+                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
             }
             break;
         case 2:
             if (parseInt(window.getComputedStyle(enemy).getPropertyValue("left")) === 0) {
                 move(enemy, "droite");
+                enemy.style.background = "url(images/ennemi/DROITE.gif)";
             }
             else {
                 move(enemy, "gauche");
+                enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
             }
             break;
         case 3:
             if (parseInt(window.getComputedStyle(enemy).getPropertyValue("left")) === 650) {
                 move(enemy, "gauche");
+                enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
             }
             else {
                 move(enemy, "droite");
+                enemy.style.background = "url(images/ennemi/DROITE.gif)";
             }
             break;
     }
