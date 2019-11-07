@@ -43,10 +43,9 @@ table {
 }
 
 #canvas {
-    width: 900px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     border: 10px solid #000;
-    margin: 50px auto;
     background-color: rgb(252, 228, 164);
     position: relative;
 }
@@ -56,8 +55,8 @@ table {
     height: 50px;
     width: 50px;
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 350px;
+    left: 300px;
 }
 
 #enemy {
@@ -67,4 +66,21 @@ table {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.bomb {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(116, 107, 107);
+    border-radius: 100%;
+    position: absolute;
+} 
+
+#life {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 100px;
+    border: 2px solid #333;
 }
