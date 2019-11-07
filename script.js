@@ -95,9 +95,14 @@ window.addEventListener("keydown", function (event) {
     }
 });
 
-// faire bouger l'enemy dans une direction aléatoirement
+// faire bouger l'ennemi dans une direction aléatoirement
+
+
+
+
 setInterval(function () {
     let random = getRandomInt(4);
+    
     switch (random) {
         case 0:
             if (parseInt(window.getComputedStyle(enemy).getPropertyValue("top")) === 0) {
@@ -161,8 +166,11 @@ let myHero;
 let myEnemy;
 let compt = 3;
 let life = document.querySelector("#life p");
+let score = document.querySelector("#score p");
+let scorePlus = 0;
 
 life.innerHTML = "VIES : " + compt;
+score.innerHTML = "SCORE : " + scorePlus;
 
 
 function checkBombHero() {
@@ -178,14 +186,11 @@ function checkBombHero() {
         
         compt -= 1;
         life.innerHTML = "VIES : " + compt;
-        console.log(compt);
         
         if (compt == 0){
-            console.log('stop');
+            gameOver();
         }
     }
-
-
 }
 
 // Collision Ennemi Bombe (sans périmètre)
@@ -199,6 +204,10 @@ function checkBombEnemy() {
         myEnemy.x + myEnemy.width + myPerimetre.width > myBomb.x &&
         myEnemy.y < myBomb.y + myBomb.height + myPerimetre.height &&
         myEnemy.height + myEnemy.y + myPerimetre.height > myBomb.y) {
+            scorePlus ++;
+            score.innerHTML = "SCORE : " + scorePlus;
+            enemy.remove();
+           
         console.log("collision bombe ennemi !");
     }
 }
@@ -217,11 +226,18 @@ function checkCollision() {
 
         compt = compt - 1;
         life.innerHTML = "VIES : " + compt;
-        console.log(compt);
 
         if (compt == 0){
-            console.log('stop');
+            gameOver();
         }
     }
 }
 
+let gameOv = document.querySelector('h1');
+
+function gameOver () {
+    game.classList.add("gameover");
+    gameOv.innerHTML = "GAME OVER<br>" + "SCORE = " + scorePlus;
+    enemy.remove();
+    hero.remove();
+}
