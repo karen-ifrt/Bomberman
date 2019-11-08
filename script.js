@@ -4,7 +4,6 @@ function getRandomInt(max) {
 }
 
 let hero = document.getElementById("hero");
-let enemy = document.getElementById("enemy");
 let game = document.getElementById("canvas");
 
 
@@ -66,35 +65,39 @@ window.addEventListener("keydown", function (event) {
         case 38:
             //code quand on va en haut
             move(hero, "haut");
-            hero.style.background = "url(images/HAUT.gif)";
+            hero.style.background = "url(images/haut1.gif)";
             break;
 
         //droite
         case 39:
             //code quand on va à droite
             move(hero, "droite");
-            hero.style.background = "url(images/DROIT.gif)";
+            hero.style.background = "url(images/droit3.gif)";
             break;
 
         //bas
-        case 40:  
-        //code quand on va en bas
+        case 40:
+            //code quand on va en bas
             move(hero, "bas");
-            hero.style.background = "url(images/BAS.gif)";
+            hero.style.background = "url(images/bas2.gif)";
             break;
 
         //gauche
         case 37:
             //code quand on va à gauche
             move(hero, "gauche");
-            hero.style.background = "url(images/GAUCHE.gif)";
+            hero.style.background = "url(images/gauche1.gif)";
             break;
 
         case 32:
             let bombes = document.querySelectorAll(".bomb");
-            if (bombes.length < 5) {
+            if (bombes.length < 3) {
                 drop();
             }
+            break;
+
+        case 96:
+            location.reload();
             break;
     }
 });
@@ -105,49 +108,54 @@ window.addEventListener("keydown", function (event) {
 
 
 setInterval(function () {
-    let random = getRandomInt(4);
-    
-    switch (random) {
-        case 0:
-            if (parseInt(window.getComputedStyle(enemy).getPropertyValue("top")) === 0) {
-                move(enemy, "bas");
-                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
-            }
-            else {
-                move(enemy, "haut");
-                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
-            }
-            break;
-        case 1:
-            if (parseInt(window.getComputedStyle(enemy).getPropertyValue("top")) === 650) {
-                move(enemy, "haut");
-                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
-            }
-            else {
-                move(enemy, "bas");
-                enemy.style.background = "url(images/ennemi/DEVANT.gif)";
-            }
-            break;
-        case 2:
-            if (parseInt(window.getComputedStyle(enemy).getPropertyValue("left")) === 0) {
-                move(enemy, "droite");
-                enemy.style.background = "url(images/ennemi/DROITE.gif)";
-            }
-            else {
-                move(enemy, "gauche");
-                enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
-            }
-            break;
-        case 3:
-            if (parseInt(window.getComputedStyle(enemy).getPropertyValue("left")) === 650) {
-                move(enemy, "gauche");
-                enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
-            }
-            else {
-                move(enemy, "droite");
-                enemy.style.background = "url(images/ennemi/DROITE.gif)";
-            }
-            break;
+    let enemy = document.querySelectorAll(".enemy");
+
+    for (let i = 0; i < enemy.length; i++) {
+
+        let random = getRandomInt(4);
+
+        switch (random) {
+            case 0:
+                if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")) === 0) {
+                    move(enemy[i], "bas");
+                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                }
+                else {
+                    move(enemy[i], "haut");
+                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                }
+                break;
+            case 1:
+                if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")) === 650) {
+                    move(enemy[i], "haut");
+                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                }
+                else {
+                    move(enemy[i], "bas");
+                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                }
+                break;
+            case 2:
+                if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")) === 0) {
+                    move(enemy[i], "droite");
+                    // enemy.style.background = "url(images/ennemi/DROITE.gif)";
+                }
+                else {
+                    move(enemy[i], "gauche");
+                    // enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
+                }
+                break;
+            case 3:
+                if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")) === 650) {
+                    move(enemy[i], "gauche");
+                    // enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
+                }
+                else {
+                    move(enemy[i], "droite");
+                    // enemy.style.background = "url(images/ennemi/DROITE.gif)";
+                }
+                break;
+        }
     }
 }, 1000)
 
@@ -162,6 +170,11 @@ function drop() {
     bombLeft = window.getComputedStyle(hero).getPropertyValue("left");
     bomb.style.top = bombTop;
     bomb.style.left = bombLeft;
+
+    setTimeout(function() {
+        bomb.classList.add("explosion");
+    }, 2500);
+
     setTimeout(function () {
         checkBombEnemy();
         checkBombHero();
@@ -175,7 +188,7 @@ function drop() {
 // Collision Héros Bombe (sans périmètre)
 
 let myHero;
-let myEnemy;
+let myenemy;
 let compt = 3;
 let life = document.querySelector("#life p");
 let score = document.querySelector("#score p");
@@ -195,11 +208,11 @@ function checkBombHero() {
         myHero.y < myBomb.y + myBomb.height + myPerimetre.height &&
         myHero.height + myHero.y + myPerimetre.height > myBomb.y) {
         console.log("collision bombe héros !");
-        
+
         compt -= 1;
         life.innerHTML = "VIES : " + compt;
-        
-        if (compt == 0){
+
+        if (compt == 0) {
             gameOver();
         }
     }
@@ -208,48 +221,67 @@ function checkBombHero() {
 // Collision Ennemi Bombe (sans périmètre)
 
 function checkBombEnemy() {
-    myEnemy = { x: parseInt(window.getComputedStyle(enemy).getPropertyValue("top")), y: parseInt(window.getComputedStyle(enemy).getPropertyValue("left")), width: 50, height: 50 }
-    myBomb = { x: top_bomb, y: left_bomb, width: 50, height: 50 }
-    myPerimetre = { width: 50, height: 50 }
+    let enemy = document.querySelectorAll(".enemy");
 
-    if (myEnemy.x < myBomb.x + myBomb.width + myPerimetre.width &&
-        myEnemy.x + myEnemy.width + myPerimetre.width > myBomb.x &&
-        myEnemy.y < myBomb.y + myBomb.height + myPerimetre.height &&
-        myEnemy.height + myEnemy.y + myPerimetre.height > myBomb.y) {
-            scorePlus ++;
+    for (let i = 0; i < enemy.length; i++) {
+
+        myEnemy = { x: parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")), y: parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")), width: 50, height: 50 }
+        myBomb = { x: top_bomb, y: left_bomb, width: 50, height: 50 }
+        myPerimetre = { width: 50, height: 50 }
+
+        if (myEnemy.x < myBomb.x + myBomb.width + myPerimetre.width &&
+            myEnemy.x + myEnemy.width + myPerimetre.width > myBomb.x &&
+            myEnemy.y < myBomb.y + myBomb.height + myPerimetre.height &&
+            myEnemy.height + myEnemy.y + myPerimetre.height > myBomb.y) {
+            scorePlus++;
             score.innerHTML = "SCORE : " + scorePlus;
-            enemy.remove();
-           
-        console.log("collision bombe ennemi !");
+            enemy[i].remove();
+
+            console.log("collision bombe ennemi !");
+        }
     }
+
 }
 
 // Collision Héros Ennemi
 
 function checkCollision() {
-    myHero = { x: parseInt(window.getComputedStyle(hero).getPropertyValue("top")), y: parseInt(window.getComputedStyle(hero).getPropertyValue("left")), width: 50, height: 50 }
-    myEnemy = { x: parseInt(window.getComputedStyle(enemy).getPropertyValue("top")), y: parseInt(window.getComputedStyle(enemy).getPropertyValue("left")), width: 50, height: 50 }
+    let enemy = document.querySelectorAll(".enemy");
+    for (let i = 0; i < enemy.length; i++) {
 
-    if (myHero.x < myEnemy.x + myEnemy.width &&
-        myHero.x + myHero.width > myEnemy.x &&
-        myHero.y < myEnemy.y + myEnemy.height &&
-        myHero.height + myHero.y > myEnemy.y) {
-        console.log("collision ennemi héros !");
+        myHero = { x: parseInt(window.getComputedStyle(hero).getPropertyValue("top")), y: parseInt(window.getComputedStyle(hero).getPropertyValue("left")), width: 50, height: 50 }
+        myEnemy = { x: parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")), y: parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")), width: 50, height: 50 }
 
-        compt = compt - 1;
-        life.innerHTML = "VIES : " + compt;
+        if (myHero.x < myEnemy.x + myEnemy.width &&
+            myHero.x + myHero.width > myEnemy.x &&
+            myHero.y < myEnemy.y + myEnemy.height &&
+            myHero.height + myHero.y > myEnemy.y) {
+            console.log("collision ennemi héros !");
 
-        if (compt == 0){
-            gameOver();
+            compt = compt - 1;
+            life.innerHTML = "VIES : " + compt;
+
+            if (compt == 0) {
+                gameOver();
+            }
         }
     }
 }
 
-let gameOv = document.querySelector('h1');
+// Game Over
 
-function gameOver () {
+let gameOv = document.querySelector('h1');
+let replay = document.querySelector('#canvas .p-replay');
+
+function gameOver() {
     game.classList.add("gameover");
     gameOv.innerHTML = "GAME OVER<br>" + "SCORE = " + scorePlus;
-    enemy.remove();
+    replay.innerHTML = "Appuyez sur zéro pour rejouer";
+    
+    let enemy = document.querySelectorAll(".enemy");
+
+    for (let i = 0; i < enemy.length; i++) {
+        enemy[i].remove();
+    }
     hero.remove();
 }
