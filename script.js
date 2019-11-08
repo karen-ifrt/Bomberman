@@ -5,7 +5,7 @@ function getRandomInt(max) {
 
 let hero = document.getElementById("hero");
 let game = document.getElementById("canvas");
-
+let obstacle = document.querySelectorAll('.obstacle');
 
 // fonction qui permet de bouger un élément dans une direction
 function move(element, direction) {
@@ -22,38 +22,99 @@ function move(element, direction) {
             top_element = parseInt(
                 window.getComputedStyle(element).getPropertyValue("top")
             );
-            if (top_element < 650) {
+            collision = false;
+            for (let i = 0; i < obstacle.length; i++) {
+                let top_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("top"))
+                let left_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
+
+                if (top_obstacle == top_element + 50 && left_obstacle == left_element) {
+                    console.log("obstacle bas !");
+                    collision = true;
+                    break;
+                }
+            };
+
+            if (top_element < 650 && collision == false) {
                 top_element += 50;
                 element.style.top = top_element + "px";
             }
             break;
+
+
         case "haut":
             top_element = parseInt(
                 window.getComputedStyle(element).getPropertyValue("top")
             );
-            if (top_element > 0) {
+            collision = false;
+            for (let i = 0; i < obstacle.length; i++) {
+                let top_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("top"))
+                let left_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
+
+                if (top_obstacle + 50 == top_element && left_obstacle == left_element) {
+                    console.log("obstacle haut !");
+                    collision = true;
+                    break;
+                }
+            };
+
+            if (top_element > 0 && collision == false) {
                 top_element -= 50;
                 element.style.top = top_element + "px";
             }
             break;
+
+
         case "droite":
             left_element = parseInt(
                 window.getComputedStyle(element).getPropertyValue("left")
             );
-            if (left_element < 650) {
+            collision = false;
+            for (let i = 0; i < obstacle.length; i++) {
+                let top_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("top"))
+                let left_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
+
+                if (top_obstacle == top_element && left_obstacle == left_element + 50) {
+                    console.log("obstacle droite !");
+                    collision = true;
+                    break;
+                }
+            };
+
+            if (left_element < 650 && collision == false) {
                 left_element += 50;
                 element.style.left = left_element + "px";
             }
             break;
+
         case "gauche":
             left_element = parseInt(
                 window.getComputedStyle(element).getPropertyValue("left")
             );
-            if (left_element > 0) {
+            collision = false;
+            for (let i = 0; i < obstacle.length; i++) {
+                let top_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("top"))
+                let left_obstacle = parseInt(
+                    window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
+                if (top_obstacle == top_element && left_obstacle + 50 == left_element) {
+                    console.log("obstacle gauche !");
+                    collision = true;
+                    break;
+                }
+            };
+
+            if (left_element > 0 && collision == false) {
                 left_element -= 50;
                 element.style.left = left_element + "px";
             }
             break;
+
     }
     checkCollision();
 }
@@ -105,8 +166,6 @@ window.addEventListener("keydown", function (event) {
 // faire bouger l'ennemi dans une direction aléatoirement
 
 
-
-
 setInterval(function () {
     let enemy = document.querySelectorAll(".enemy");
 
@@ -118,46 +177,46 @@ setInterval(function () {
             case 0:
                 if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")) === 0) {
                     move(enemy[i], "bas");
-                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DEVANT.gif)";
                 }
                 else {
                     move(enemy[i], "haut");
-                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DEVANT.gif)";
                 }
                 break;
             case 1:
                 if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("top")) === 650) {
                     move(enemy[i], "haut");
-                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DEVANT.gif)";
                 }
                 else {
                     move(enemy[i], "bas");
-                    // enemy.style.background = "url(images/ennemi/DEVANT.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DEVANT.gif)";
                 }
                 break;
             case 2:
                 if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")) === 0) {
                     move(enemy[i], "droite");
-                    // enemy.style.background = "url(images/ennemi/DROITE.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DROITE.gif)";
                 }
                 else {
                     move(enemy[i], "gauche");
-                    // enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
+                    enemy[i].style.background = "url(images/ennemi/ENNEMI-GAUCHE.gif)";
                 }
                 break;
             case 3:
                 if (parseInt(window.getComputedStyle(enemy[i]).getPropertyValue("left")) === 650) {
                     move(enemy[i], "gauche");
-                    // enemy.style.background = "url(images/ennemi/GAUCHE.gif)";
+                    enemy[i].style.background = "url(images/ennemi/ENNEMI-GAUCHE.gif)";
                 }
                 else {
                     move(enemy[i], "droite");
-                    // enemy.style.background = "url(images/ennemi/DROITE.gif)";
+                    enemy[i].style.background = "url(images/ennemi/DROITE.gif)";
                 }
                 break;
         }
     }
-}, 1000)
+}, 1500)
 
 
 // Création et explosion de la bombe
@@ -171,7 +230,7 @@ function drop() {
     bomb.style.top = bombTop;
     bomb.style.left = bombLeft;
 
-    setTimeout(function() {
+    setTimeout(function () {
         bomb.classList.add("explosion");
     }, 2500);
 
@@ -185,10 +244,10 @@ function drop() {
     left_bomb = parseInt(window.getComputedStyle(bomb).getPropertyValue("left"));
 }
 
-// Collision Héros Bombe (sans périmètre)
+// Collision Héros Bombe
 
 let myHero;
-let myenemy;
+let myEnemy;
 let compt = 3;
 let life = document.querySelector("#life p");
 let score = document.querySelector("#score p");
@@ -196,7 +255,6 @@ let scorePlus = 0;
 
 life.innerHTML = "VIES : " + compt;
 score.innerHTML = "SCORE : " + scorePlus;
-
 
 function checkBombHero() {
     myHero = { x: parseInt(window.getComputedStyle(hero).getPropertyValue("top")), y: parseInt(window.getComputedStyle(hero).getPropertyValue("left")), width: 50, height: 50 }
@@ -211,14 +269,16 @@ function checkBombHero() {
 
         compt -= 1;
         life.innerHTML = "VIES : " + compt;
-
+ 
         if (compt == 0) {
             gameOver();
         }
     }
 }
 
-// Collision Ennemi Bombe (sans périmètre)
+// Collision Ennemi Bombe
+
+let win = 0;
 
 function checkBombEnemy() {
     let enemy = document.querySelectorAll(".enemy");
@@ -235,10 +295,18 @@ function checkBombEnemy() {
             myEnemy.height + myEnemy.y + myPerimetre.height > myBomb.y) {
             scorePlus++;
             score.innerHTML = "SCORE : " + scorePlus;
+
             enemy[i].remove();
+            win++;
+
+            if (win == 4) {
+                winGame();
+            }
 
             console.log("collision bombe ennemi !");
         }
+
+
     }
 
 }
@@ -277,7 +345,7 @@ function gameOver() {
     game.classList.add("gameover");
     gameOv.innerHTML = "GAME OVER<br>" + "SCORE = " + scorePlus;
     replay.innerHTML = "Appuyez sur zéro pour rejouer";
-    
+
     let enemy = document.querySelectorAll(".enemy");
 
     for (let i = 0; i < enemy.length; i++) {
@@ -285,3 +353,15 @@ function gameOver() {
     }
     hero.remove();
 }
+
+// Partie gagnée
+
+let gameWin = document.querySelector('#canvas .p-win');
+
+function winGame() {
+    game.classList.add("win");
+    gameWin.innerHTML = "PARTIE GAGNÉE<br>";
+    hero.remove();
+}
+
+

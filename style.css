@@ -58,6 +58,10 @@ body {
     background-color: #333;
 }
 
+.win {
+    background-color: lightgreen;
+}
+
 #hero {
     background-color: rgb(38, 81, 221);
     height: 50px;
@@ -68,12 +72,16 @@ body {
     background: url(images/face.gif);
 }
 
+.enemy {
+    background: url(images/ennemi/DEVANT.gif);
+}
+
+
 #enemys div:first-child {
     height: 50px;
     width: 50px;
     top: 0;
     left: 0;
-    background: url(images/ennemi/DEVANT.gif);
     position: absolute;
 }
 
@@ -82,7 +90,6 @@ body {
     width: 50px;
     bottom: 0;
     left: 0;
-    background: url(images/ennemi/DEVANT.gif);
     position: absolute;
 }
 
@@ -91,7 +98,6 @@ body {
     width: 50px;
     top: 50px;
     left: 600px;
-    background: url(images/ennemi/DEVANT.gif);
     position: absolute;
 }
 
@@ -100,7 +106,6 @@ body {
     width: 50px;
     top: 600px;
     left: 600px;
-    background: url(images/ennemi/DEVANT.gif);
     position: absolute;
 }
 
@@ -160,4 +165,71 @@ h1 {
 #canvas .p-replay {
     font-size: 2.5rem;
     text-align: center;
-    }
+}
+
+#canvas .p-win {
+    margin-top: 270px;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#obstacles div:nth-child(1) {
+    top: 50px;
+    left: 50px;
+}
+
+#obstacles div:nth-child(2) {
+    bottom: 200px;
+    left: 200px;
+}
+
+#obstacles div:nth-child(3) {
+    bottom: 200px;
+    left: 250px;
+}
+
+#obstacles div:nth-child(4) {
+    top: 150px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(5) {
+    top: 50px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(6) {
+    top: 100px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(7) {
+    bottom: 200px;
+    left: 300px;
+}
+
+#obstacles div:nth-child(8) {
+    bottom: 250px;
+    left: 300px;
+}
+
+#obstacles div:nth-child(9) {
+    bottom: 250px;
+    left: 350px;
+}
+
+#obstacles div:nth-child(10) {
+    bottom: 250px;
+    left: 400px;
+}
+
+.obstacle {
+    position: absolute;
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+}
+
+#obstacles {
+}
