@@ -1,0 +1,295 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*Regles du jeux &CIE*/
+.border{
+    /* text-align: center;
+    box-sizing: border-box;
+    width: 100%; */
+    text-decoration: underline rebeccapurple;
+    text-align: center;
+    margin:  auto;
+}
+h3{
+    font-size: 1.5rem;
+}
+p{
+    font-size: 1.3rem;
+}
+
+/*Sound*/
+.son{
+    position: absolute;
+    left: -10000em;
+    top: auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.canva {
+    width: 700px;
+    height: 700px;
+    border: 10px solid #000;
+    background-color: rgb(252, 228, 164);
+    position: relative;
+    margin-left: auto;
+    /* margin-top: 40px; */
+    margin-right: auto;
+}
+
+.allgame {
+    display: flex;
+}
+
+.gameover {
+    background-color: #333;
+}
+
+.win {
+    background-color: lightgreen;
+}
+
+#hero {
+    background-color: rgb(38, 81, 221);
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    bottom: 350px;
+    left: 300px;
+    background: url(images/face.gif);
+}
+
+.enemy {
+    background: url(images/ennemi/DEVANT.gif);
+}
+
+
+
+#enemys div:first-child {
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+#enemys div:nth-child(2) {
+    height: 50px;
+    width: 50px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+#enemys div:nth-child(3) {
+    height: 50px;
+    width: 50px;
+    top: 50px;
+    left: 600px;
+    position: absolute;
+}
+
+#enemys div:nth-child(4) {
+    height: 50px;
+    width: 50px;
+    top: 600px;
+    left: 600px;
+    position: absolute;
+}
+
+.bomb {
+    height: 50px;
+    width: 50px;
+    background-color: rgb(116, 107, 107);
+    border-radius: 100%;
+    position: absolute;
+    background: url(images/bomb1.gif);
+} 
+
+.explosion {
+    background: url(images/bomb4.gif) center / contain no-repeat;
+    transform: scale(3);  
+}
+
+#life {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 100px;
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    height: 20px;
+    width: 100px;
+}
+
+#score p {
+    border: 2px solid rgb(108, 231, 139);
+    text-align: center;
+    font-size: 18px;
+    background-color: rgb(108, 231, 139);
+    color: #333;
+}
+
+#life p {
+    border: 2px solid #333;
+    text-align: center;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+}
+
+h1 {
+    margin-top: 270px;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#canvas .p-replay {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#canvas .p-win {
+    margin-top: 270px;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#obstacles div:nth-child(1) {
+    top: 50px;
+    left: 50px;
+}
+
+#obstacles div:nth-child(2) {
+    bottom: 150px;
+    left: 200px;
+}
+
+#obstacles div:nth-child(3) {
+    bottom: 150px; 
+    left: 250px; 
+}
+
+#obstacles div:nth-child(4) {
+    top: 150px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(5) {
+    top: 50px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(6) {
+    top: 100px;
+    left: 100px;
+}
+
+#obstacles div:nth-child(7) {
+    bottom: 150px;
+    left: 300px;
+}
+
+#obstacles div:nth-child(8) {
+    bottom: 200px;
+    left: 300px;
+}
+
+#obstacles div:nth-child(9) {
+    bottom: 200px;
+    left: 350px;
+}
+
+#obstacles div:nth-child(10) {
+    bottom: 200px;
+    left: 400px;
+}
+
+#obstacles div:nth-child(11) {
+    bottom: 500px;
+    left: 450px;
+}
+
+#obstacles div:nth-child(12) {
+    bottom: 500px; 
+    left: 500px; 
+}
+
+#obstacles div:nth-child(13) {
+    bottom: 500px;
+    left: 550px;
+}
+
+#obstacles div:nth-child(14) {
+    bottom: 500px;
+    left: 150px;
+}
+
+#obstacles div:nth-child(15) {
+    bottom: 500px;
+    left: 400px;
+}
+
+
+
+.obstacle {
+    position: absolute;
+    background-color: brown;
+    height: 50px;
+    width: 50px;
+    background: url(images/brick.png) center / contain no-repeat;
+}

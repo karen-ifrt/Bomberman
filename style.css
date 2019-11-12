@@ -46,12 +46,46 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+/*Regles du jeux &CIE*/
+.border{
+    /* text-align: center;
+    box-sizing: border-box;
+    width: 100%; */
+    text-decoration: underline rebeccapurple;
+    text-align: center;
+    margin:  auto;
+}
+h3{
+    font-size: 1.5rem;
+}
+p{
+    font-size: 1.3rem;
+}
+
+/*Sound*/
+.son{
+    position: absolute;
+    left: -10000em;
+    top: auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
 .canva {
     width: 700px;
     height: 700px;
     border: 10px solid #000;
     background-color: rgb(252, 228, 164);
     position: relative;
+    margin-left: auto;
+    /* margin-top: 40px; */
+    margin-right: auto;
+}
+
+.allgame {
+    display: flex;
 }
 
 .gameover {
@@ -75,6 +109,7 @@ body {
 .enemy {
     background: url(images/ennemi/DEVANT.gif);
 }
+
 
 
 #enemys div:first-child {
@@ -180,13 +215,13 @@ h1 {
 }
 
 #obstacles div:nth-child(2) {
-    bottom: 200px;
+    bottom: 150px;
     left: 200px;
 }
 
 #obstacles div:nth-child(3) {
-    bottom: 200px;
-    left: 250px;
+    bottom: 150px; 
+    left: 250px; 
 }
 
 #obstacles div:nth-child(4) {
@@ -205,31 +240,56 @@ h1 {
 }
 
 #obstacles div:nth-child(7) {
-    bottom: 200px;
+    bottom: 150px;
     left: 300px;
 }
 
 #obstacles div:nth-child(8) {
-    bottom: 250px;
+    bottom: 200px;
     left: 300px;
 }
 
 #obstacles div:nth-child(9) {
-    bottom: 250px;
+    bottom: 200px;
     left: 350px;
 }
 
 #obstacles div:nth-child(10) {
-    bottom: 250px;
+    bottom: 200px;
     left: 400px;
 }
+
+#obstacles div:nth-child(11) {
+    bottom: 500px;
+    left: 450px;
+}
+
+#obstacles div:nth-child(12) {
+    bottom: 500px; 
+    left: 500px; 
+}
+
+#obstacles div:nth-child(13) {
+    bottom: 500px;
+    left: 550px;
+}
+
+#obstacles div:nth-child(14) {
+    bottom: 500px;
+    left: 150px;
+}
+
+#obstacles div:nth-child(15) {
+    bottom: 500px;
+    left: 400px;
+}
+
+
 
 .obstacle {
     position: absolute;
     background-color: brown;
     height: 50px;
     width: 50px;
-}
-
-#obstacles {
+    background: url(images/brick.png) center / contain no-repeat;
 }

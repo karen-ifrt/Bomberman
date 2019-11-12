@@ -1,3 +1,25 @@
+//Soundbard[AP_JS vs JQUERY]
+var source = "https://html5music.herokuapp.com/media/no_words.webm";
+var audio = new Audio(); // use the constructor in JavaScript, just easier that way
+audio.addEventListener("load", function() {
+  audio.play();
+}, true);
+audio.src = source;
+audio.autoplay = true; // add this
+
+$("#playBtn").click(function() {
+  audio.play();
+});
+
+$("#pauseBtn").click(function() {
+  audio.pause();
+});
+
+$("#stopBtn").click(function() {
+  audio.pause();
+  audio.currentTime = 0;
+});
+
 //chosit un nombre aléatoire
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -344,7 +366,7 @@ let replay = document.querySelector('#canvas .p-replay');
 function gameOver() {
     game.classList.add("gameover");
     gameOv.innerHTML = "GAME OVER<br>" + "SCORE = " + scorePlus;
-    replay.innerHTML = "Appuyez sur zéro pour rejouer";
+    replay.innerHTML = "";
 
     let enemy = document.querySelectorAll(".enemy");
 
