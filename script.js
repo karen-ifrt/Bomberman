@@ -52,7 +52,6 @@ function move(element, direction) {
                     window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
 
                 if (top_obstacle == top_element + 50 && left_obstacle == left_element) {
-                    console.log("obstacle bas !");
                     collision = true;
                     break;
                 }
@@ -77,7 +76,6 @@ function move(element, direction) {
                     window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
 
                 if (top_obstacle + 50 == top_element && left_obstacle == left_element) {
-                    console.log("obstacle haut !");
                     collision = true;
                     break;
                 }
@@ -102,7 +100,6 @@ function move(element, direction) {
                     window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
 
                 if (top_obstacle == top_element && left_obstacle == left_element + 50) {
-                    console.log("obstacle droite !");
                     collision = true;
                     break;
                 }
@@ -125,7 +122,6 @@ function move(element, direction) {
                 let left_obstacle = parseInt(
                     window.getComputedStyle(obstacle[i]).getPropertyValue("left"))
                 if (top_obstacle == top_element && left_obstacle + 50 == left_element) {
-                    console.log("obstacle gauche !");
                     collision = true;
                     break;
                 }
@@ -238,7 +234,7 @@ setInterval(function () {
                 break;
         }
     }
-}, 1500)
+}, 800)
 
 
 // Création et explosion de la bombe
@@ -287,7 +283,6 @@ function checkBombHero() {
         myHero.x + myHero.width + myPerimetre.width > myBomb.x &&
         myHero.y < myBomb.y + myBomb.height + myPerimetre.height &&
         myHero.height + myHero.y + myPerimetre.height > myBomb.y) {
-        console.log("collision bombe héros !");
 
         compt -= 1;
         life.innerHTML = "VIES : " + compt;
@@ -325,7 +320,6 @@ function checkBombEnemy() {
                 winGame();
             }
 
-            console.log("collision bombe ennemi !");
         }
 
 
@@ -346,7 +340,6 @@ function checkCollision() {
             myHero.x + myHero.width > myEnemy.x &&
             myHero.y < myEnemy.y + myEnemy.height &&
             myHero.height + myHero.y > myEnemy.y) {
-            console.log("collision ennemi héros !");
 
             compt = compt - 1;
             life.innerHTML = "VIES : " + compt;
@@ -373,6 +366,9 @@ function gameOver() {
     for (let i = 0; i < enemy.length; i++) {
         enemy[i].remove();
     }
+    for (let i = 0; i < obstacle.length; i++) {
+        obstacle[i].remove();
+    }
     hero.remove();
 }
 
@@ -384,6 +380,9 @@ function winGame() {
     game.classList.add("win");
     gameWin.innerHTML = "PARTIE GAGNÉE<br>";
     hero.remove();
+    for (let i = 0; i < obstacle.length; i++) {
+        obstacle[i].remove();
+    }
 }
 
 

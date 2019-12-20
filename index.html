@@ -34,7 +34,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Bomberman | Game</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Archivo&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 
 </head>
@@ -42,19 +43,7 @@
 <body>
 
   <div class="allgame">
-    <div id="bordure" class="border">
-      <h3 class="const">
-        <br />
-        Règles de Jeux
-      </h3>
-      <br />
-      <br />
-      <p class="p1">
-        Utiliser les flèches pour jouer<br />
-        Pour recommencer une partie touche 0 <br />
-        Pour poser une bombe appuyer sur espace
-      </p>
-    </div>
+
 
     <!--section_soundboard autoplay/generate with JQUERY-->
 
@@ -97,9 +86,26 @@
         <p></p>
       </div>
     </div>
-  </div>
-  <!--Règles du jeux &CIE-->
 
+    <div id="bordure" class="border">
+      <div class="rules">
+        <h3>Règles du jeu</h3>
+        <div class="fleche">
+          <img src="images/direction.svg" alt="fleches" class="fleche-img">
+          <p>Pour se déplacer</p>
+        </div>
+        <div class="espace">
+          <img src="images/spacebar.svg" alt="Espace" class="fleche-img">
+          <p>Touche espace pour lancer une bombe</p>
+        </div>
+        <div class="zero">
+          <img src="images/key.svg" alt="key 0" class="fleche-img">
+          <p>pour rejouer</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 
 

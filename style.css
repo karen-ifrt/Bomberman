@@ -44,23 +44,58 @@ table {
 
 body {
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 
 /*Regles du jeux &CIE*/
 .border{
-    /* text-align: center;
-    box-sizing: border-box;
-    width: 100%; */
-    text-decoration: underline rebeccapurple;
+    /* text-align: center; */
+    margin: 150px auto;
+    font-family: 'Archivo', sans-serif;
+    text-transform: uppercase;
+}
+
+.rules {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 50px 20px;
+    border-radius: 8px;
+}
+
+h3 {
+    font-size: 1.8rem;
     text-align: center;
-    margin:  auto;
+    color:#011751;
+    font-weight: bold;
 }
-h3{
-    font-size: 1.5rem;
-}
-p{
+
+p {
     font-size: 1.3rem;
+}
+
+.fleche {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.espace {
+    display: flex;
+}
+
+.fleche-img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.zero {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.espace {
+    margin-top: 10px;
 }
 
 /*Sound*/
@@ -77,24 +112,26 @@ p{
     width: 700px;
     height: 700px;
     border: 10px solid #000;
-    background-color: rgb(252, 228, 164);
+    background: linear-gradient(#AB4DC0, #04286E);
     position: relative;
     margin-left: auto;
-    /* margin-top: 40px; */
     margin-right: auto;
+    margin-bottom: 200px;
 }
 
 .allgame {
     display: flex;
+    background: no-repeat url("images/bg-bomberman.jpg");
+    background-size: cover;
 }
 
 .gameover {
     background-color: #333;
 }
 
-.win {
+/* .win {
     background-color: lightgreen;
-}
+} */
 
 #hero {
     background-color: rgb(38, 81, 221);
@@ -155,7 +192,7 @@ p{
 
 .explosion {
     background: url(images/bomb4.gif) center / contain no-repeat;
-    transform: scale(3);  
+    transform: scale(3);
 }
 
 #life {
@@ -291,5 +328,5 @@ h1 {
     background-color: brown;
     height: 50px;
     width: 50px;
-    background: url(images/brick.png) center / contain no-repeat;
+    background: url(images/firewall.svg) center / contain no-repeat;
 }
